@@ -1,4 +1,4 @@
-# 🏦 Menu Bancário em Python
+# 🏦 Menu Bancário em Python - Versão 2
 
 Um projetinho **simples e direto** feito para quem está começando no mundo da programação.  
 Essa aplicação simula um **menu bancário básico**, onde você pode **depositar**, **sacar**, **ver seu extrato**, **cadastrar cliente**, **cadastrar conta**, **listar contas** ou **sair do sistema**.
