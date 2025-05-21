@@ -1,7 +1,7 @@
 # 🏦 Menu Bancário em Python
 
 Um projetinho **simples e direto** feito para quem está começando no mundo da programação.  
-Essa aplicação simula um **menu bancário básico**, onde você pode **depositar**, **sacar**, **ver seu extrato** ou **sair do sistema**.
+Essa aplicação simula um **menu bancário básico**, onde você pode **depositar**, **sacar**, **ver seu extrato**, **cadastrar cliente**, **cadastrar conta**, **listar contas** ou **sair do sistema**.
 
 A ideia aqui é mostrar o básico de Python com **entrada de dados**, **estrutura de repetição**, **condicionais** e **manipulação de variáveis**. Nada de frameworks, nada de firula — é o Python raiz 🐍.
 
@@ -17,13 +17,31 @@ A ideia aqui é mostrar o básico de Python com **entrada de dados**, **estrutur
 
 - Verificação de entrada inválida
 
+- Cadastrar cliente
+
+- Cadastrar conta
+
+- Listar contas
+
 ## 📁 Estrutura do Projeto
 
 ```
 project/
 └── src/
     └── app/
-        └── bank_menu.py
+        └── main.py
+        └── operations
+        |    └── __init__.py
+        |    └── create_account.py
+        |    └── create_customer.py
+        |    └── deposit.py
+        |    └── display_extract.py
+        |    └── filter_customer.py
+        |    └── list_accounts.py
+        |    └── withdraw.py
+        └── utils
+            └── __init__.py
+            └── menu.py
 
 ```
 
@@ -35,11 +53,11 @@ project/
    ```bash
    cd src/app
 
-   python bank_menu.py
+   python main.py
 
    ou
 
-   python src/app/bank_menu.py
+   python src/app/main.py
    ```
 
 ## 🧠 Para que serve?
