@@ -1,5 +1,5 @@
-from utils import menu
-from operations import deposit, withdraw, display_extract, create_account, create_customer, list_accounts
+from app.utils import menu
+from app.operations import deposit, withdraw, display_extract, create_account, create_customer, list_accounts
 
 def main():
     WITHDRAWAL_LIMIT = 3
