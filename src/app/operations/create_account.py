@@ -1,11 +1,16 @@
 from .filter_customer import filter_customer
+from app.account import CheckingAccount
 
-def create_account(agency, number_account, customers):
+def create_account(number_account, customers, accounts):
     cpf = input("Informe o CPF do cliente: ")
     customer = filter_customer(cpf, customers)
 
-    if customer:    
-        print("\n=== Conta criada com sucesso! ===")
-        return {"agencia": agency, "numero_conta": number_account, "cliente": customer}
-    else:
-        print("\nCliente não cadastrado!")
+    if not customer:    
+        print("\n=== Cliente não encontrado, fluxo de criação de conta encerrado! ===")
+        return
+
+    account = CheckingAccount.new_account(customer=customer, number=number_account)
+    accounts.append(account)
+    customer.accounts.append(account)
+
+    print("\n=== Conta criada com sucesso! ===")

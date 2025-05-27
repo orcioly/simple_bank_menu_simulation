@@ -1,9 +1,23 @@
-def deposit(balance, value, statement, /):
+from app.customer import Customer
+from app.account import Deposit
+from .filter_customer import filter_customer
+from .recover_customer_account import recover_customer_account
 
-    if value > 0:
-        balance += value
-        statement += f"Depósito:\tR$ {value:.2f}\n"
-    else:
-        print("\nOperação falhou! O valor informado é inválido.")
+def deposit(customers: Customer):
+    
+    cpf = input("Informe o CPF do cliente: ")
+    customer = filter_customer(cpf, customers)
 
-    return balance, statement
+    if not customer:
+        print("\n=== Cliente não encontrado! ===")
+        return
+    
+    value = float(input("Informe o valor do depósito: "))
+    transaction = Deposit(value)  
+    account = recover_customer_account(customer)
+
+    if not account:
+        return
+    
+    customer.perform_transaction(account, transaction)
+    

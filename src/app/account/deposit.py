@@ -1,4 +1,5 @@
-from app.account import Transaction, Account
+from .transaction import Transaction
+from .account import Account
 
 class Deposit(Transaction):
     def __init__(self, value):

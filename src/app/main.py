@@ -2,13 +2,6 @@ from app.utils import menu
 from app.operations import deposit, withdraw, display_extract, create_account, create_customer, list_accounts
 
 def main():
-    WITHDRAWAL_LIMIT = 3
-    AGENCY = "0001"
-
-    balance = 0
-    limit = 500
-    statement = ""
-    number_of_withdrawals = 0
     customers = []
     accounts = []
 
@@ -17,27 +10,20 @@ def main():
         try:
 
             if option_menu == "d":
-                value = float(input("Informe o valor do depósito: "))
-
-                balance, statement = deposit(balance, value, statement)
+               deposit(customers)
 
             elif option_menu == "s":
-                value = float(input("Informe o valor do saque: "))
-
-                balance, statement = withdraw(balance=balance, value=value, statement=statement, limit=limit, number_of_withdrawals=number_of_withdrawals, withdrawal_limit=WITHDRAWAL_LIMIT)
+                withdraw(customers)
 
             elif option_menu == "e":
-                display_extract(balance, statement=statement)
+                display_extract(customers)
 
             elif option_menu == "c":
                 create_customer(customers)
 
             elif option_menu == "n":
                 number_account = len(accounts) + 1
-                account = create_account(AGENCY, number_account, customers)
-
-                if account:
-                    accounts.append(account)
+                create_account(number_account, customers, accounts)
             
             elif option_menu == 'l':
                 list_accounts(accounts)

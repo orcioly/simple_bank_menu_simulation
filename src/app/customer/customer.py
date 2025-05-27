@@ -3,8 +3,8 @@ class Customer:
         self.address = address
         self.accounts = []
 
-    def perform_transaction(self, account, transation):
-        transation.register(account)
+    def perform_transaction(self, account, transaction):
+      transaction.register(account)
 
     def add_account(self, account):
      self.accounts.append(account)

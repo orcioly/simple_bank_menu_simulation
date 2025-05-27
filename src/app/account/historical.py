@@ -2,7 +2,7 @@ from datetime import datetime
 
 class Historical:
     def __init__(self):
-        self.transactions = []
+        self._transactions = []
 
     @property
     def transactions(self):
@@ -11,11 +11,10 @@ class Historical:
     def add_transaction(self, transaction):
         self._transactions.append(
             {
-                "tipo": transaction.__class__.__name__,
+                # "tipo": transaction.__class__.__name__,
+                "tipo": "Depósito",
                 "valor": transaction.value,
                 "data": datetime.now().strftime("%d-%m-%Y %H:%M:%s")
             }
         )
       
-
-    

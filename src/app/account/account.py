@@ -1,10 +1,11 @@
-from app.account import Historical
+from .historical import Historical
 
 class Account:
     def __init__(self, number, customer):
         self._balance = 0
         self._number = number
         self._agency = "0001"
+        self._customer = customer
         self._historical = Historical()
 
     @classmethod

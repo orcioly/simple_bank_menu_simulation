@@ -1,4 +1,4 @@
-from app.customer import Customer
+from .customer import Customer
 
 class PeoplePhysical(Customer):
     def __init__(self, name, date_of_birth, cpf, address):

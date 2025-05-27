@@ -1,4 +1,5 @@
-from app.account import Account, Withdraw
+from .account import Account
+from .withdraw import Withdraw
 
 class CheckingAccount(Account):
     def __init__(self, number, customer, limit=500, withdrawal_limit=3):
@@ -7,7 +8,7 @@ class CheckingAccount(Account):
         self.withdrawal_limit = withdrawal_limit
 
     def withdraw(self, value):
-        number_of_withdrawals = len([transaction for transaction in self.historical.transactions if transaction["type"] == Withdraw.__name__])
+        number_of_withdrawals = len([transaction for transaction in self.historical.transactions if transaction["tipo"] == Withdraw.__name__])
 
         exceeded_limit = value > self.limit
         exceeded_withdrawal = number_of_withdrawals >= self.withdrawal_limit
@@ -26,6 +27,6 @@ class CheckingAccount(Account):
     def __str__(self):
         return f"""\
             Agência:\t{self.agency}
-            C/C:\t\t{self.number}
+            C/C:\t{self.number}
             Titular:\t{self.customer.name}
         """

@@ -1,23 +1,20 @@
-def withdraw(*, balance, value, statement, limit, number_of_withdrawals, withdrawal_limit):
-    exceeded_balance = value > balance
-    exceeded_limit = value > limit
-    exceeded_withdrawals = number_of_withdrawals >= withdrawal_limit
+from app.operations.recover_customer_account import recover_customer_account
+from app.operations.filter_customer import filter_customer
+from app.account import Withdraw
 
-    if exceeded_balance:
-        print("\nOperação falhou! Você não tem saldo suficiente.")
+def withdraw(customers):
+    cpf = input("Informe o CPF do cliente: ")
+    customer = filter_customer(cpf, customers)
 
-    elif exceeded_limit:
-        print("\nOperação falhou! O valor do saque excede o limite.")
-
-    elif exceeded_withdrawals:
-        print("\nOperação falhou! Número máximo de saques excedido.")
-
-    elif value > 0:
-        balance -= value
-        statement += f"Saque:\t\tR$ {value:.2f}\n"
-        number_of_withdrawals += 1
-
-    else:
-        print("\nOperação falhou! O valor informado é inválido.")
+    if not customer:
+        print("\n=== Cliente não encontrado! ===")
+        return
     
-    return balance, statement
+    value = float(input("Informe o valor do saque: "))
+    transaction = Withdraw(value)  
+    account = recover_customer_account(customer)
+
+    if not account:
+        return
+    
+    customer.perform_transaction(account, transaction)
