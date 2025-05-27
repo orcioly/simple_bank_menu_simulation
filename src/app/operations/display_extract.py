@@ -1,8 +1,12 @@
 from app.operations.filter_customer import filter_customer
 from app.operations.recover_customer_account import recover_customer_account
 
+LANGUAGE = {
+    "Deposit": "Depósito",
+    "Withdraw": "Saque"
+}
+
 def display_extract(customers):
-    
     cpf = input("Informe o CPF do cliente: ")
     customer = filter_customer(cpf, customers)
 
@@ -13,18 +17,19 @@ def display_extract(customers):
     account = recover_customer_account(customer)
 
     if not account:
+        print("\n=== Conta não encontrada! ===")
         return
 
-    print("\n================ EXTRATO ================")
     transactions = account.historical.transactions
 
-    extract = ""
+    print("\n================ EXTRATO ================")
     if not transactions:
-        extract = "Não foram realizadas movimentações."
+        print("Não foram realizadas movimentações.")
     else:
         for transaction in transactions:
-            extract += f"\n{transaction["tipo"]}:\n\tR$ {transaction["valor"]:.2f}"
-            
-    print(extract)
+            language_pt = LANGUAGE.get(transaction["tipo"], transaction["tipo"])
+            print(f"\n{language_pt}:")
+            print(f"\tR$ {transaction['valor']:.2f} - {transaction['data']}")
+
     print(f"\nSaldo:\n\tR$ {account.balance:.2f}")
     print("==========================================")

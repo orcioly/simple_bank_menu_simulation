@@ -40,7 +40,7 @@ class Account:
             print("\n=== Operação falhou! Você não tem saldo suficiente! ===")
 
         elif value > 0:
-            self._balance -+ value
+            self._balance -= value
             print("\n=== Saque realizado com sucesso! ===")
             return True
         

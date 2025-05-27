@@ -11,10 +11,9 @@ class Historical:
     def add_transaction(self, transaction):
         self._transactions.append(
             {
-                # "tipo": transaction.__class__.__name__,
-                "tipo": "Depósito",
+                "tipo": transaction.__class__.__name__,
                 "valor": transaction.value,
-                "data": datetime.now().strftime("%d-%m-%Y %H:%M:%s")
+                "data": datetime.now().strftime("%d-%m-%Y %H:%M:%S")
             }
         )
       
