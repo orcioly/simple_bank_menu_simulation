@@ -56,7 +56,7 @@ project/
 
 Curtiu essa versão básica? Então dá uma olhada nas evoluções:
 
-👉 [Versão 2 - Orientada a Objetos (v2)](../../tree/v2)  
-🚀 [Versão 3 - Modularizada e com boas práticas (v3)](../../tree/v3)
+👉 [Versão 2 - Com funções em arquivos separados (v2)](../../tree/v2)  
+🚀 [Versão 3 - Orientada a Objetos e modularizada com boas práticas (v3)](../../tree/v3)
 
 ### 💻 Feito com uma pitada de nostalgia por quem acredita que o básico bem-feito ainda é rei.
